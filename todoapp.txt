@@ -1,0 +1,98 @@
+import 'package:flutter/material.dart';
+
+class Todolist extends StatelessWidget {
+  const Todolist({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white70,
+      body: SafeArea(
+          child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'All Todos',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            Divider(),
+            SizedBox(height: 20),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  onTap: () {},
+                  leading: Container(
+                    padding: EdgeInsets.all(2),
+                    height: 25,
+                    width: 25,
+                    child: Icon(
+                      Icons.check,
+                    ),
+                    color: Colors.red,
+                  ),
+                  title: Text(
+                    'Todo App',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: () {
+          builder:
+          (context) => SimpleDialog(
+                backgroundColor: Colors.pinkAccent[800],
+                title: Row(
+                  children: [
+                    Text(
+                      'Add todo',
+                      style: TextStyle(fontSize: 18, color: Colors.black12),
+                    ),
+                    Spacer(),
+                    IconButton(
+                      icon: Icon(
+                        Icons.cancel,
+                        color: Colors.black45,
+                        size: 30,
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ],
+                ),
+                children: [
+                  Divider(),
+                  TextFormField(
+                    style: TextStyle(fontSize: 18, height: 1.5),
+                    decoration: InputDecoration(
+                        hintText: 'ABDULRAZZAQ',
+                        hintStyle: TextStyle(color: Colors.brown),
+                        border: InputBorder.none),
+                  ),
+                  SizedBox(height: 20),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: 50,
+                    child: FloatingActionButton(
+                        child: Text('ADD'), onPressed: () {}),
+                  ),
+                ],
+              );
+        },
+      ),
+    );
+  }
+}
